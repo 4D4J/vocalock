@@ -4,7 +4,6 @@ import json
 import random
 import psutil
 import time
-import threading
 from PyQt5.QtWidgets import (QApplication, QWidget, QVBoxLayout, QHBoxLayout, 
                             QPushButton, QLabel, QLineEdit, QListWidget, 
                             QFileDialog, QMessageBox, QInputDialog, QSystemTrayIcon, 
@@ -13,7 +12,7 @@ from PyQt5.QtCore import Qt, QTimer, pyqtSignal, QObject, QEvent
 from PyQt5.QtGui import QIcon, QPixmap, QImage
 import os.path
 from pathlib import Path
-import base64
+
 
 class Word:
     def __init__(self, english="", french=""):
@@ -320,10 +319,8 @@ class EnglishLearningApp(QWidget):
     def shutdown_computer(self):
         QMessageBox.critical(None, "Échec", "Vous avez échoué 3 fois à la traduction. L'ordinateur va s'éteindre dans 10 secondes.")
         if sys.platform == 'win32':
-            os.system('shutdown /s /t 10 /c "Vous avez échoué 3 fois à la traduction. L\'ordinateur va s\'éteindre dans 10 secondes."')
-        else:
             os.system('shutdown -h now')
-
+            
     def on_executable_launched(self, exec):
         self.create_translation_dialog(exec)
     
