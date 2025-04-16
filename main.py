@@ -11,7 +11,6 @@ from PyQt5.QtWidgets import (QApplication, QWidget, QVBoxLayout, QHBoxLayout,
 from PyQt5.QtCore import Qt, QTimer, pyqtSignal, QObject, QEvent
 from PyQt5.QtGui import QIcon, QPixmap, QImage
 import os.path
-from pathlib import Path
 
 
 class Word:
@@ -291,12 +290,6 @@ class EnglishLearningApp(QWidget):
         try:
             if sys.platform == 'win32':
                 os.startfile(path)
-                QTimer.singleShot(500, lambda: self.find_and_authorize_process(path))
-            else:
-                if sys.platform == 'darwin':
-                    os.system(f'open "{path}"')
-                else:
-                    os.system(f'xdg-open "{path}"')
                 QTimer.singleShot(500, lambda: self.find_and_authorize_process(path))
             return True
         except Exception as e:
