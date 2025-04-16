@@ -319,7 +319,7 @@ class EnglishLearningApp(QWidget):
     def shutdown_computer(self):
         QMessageBox.critical(None, "Échec", "Vous avez échoué 3 fois à la traduction. L'ordinateur va s'éteindre dans 10 secondes.")
         if sys.platform == 'win32':
-            os.system('shutdown -h now')
+            os.system('shutdown /s /t 10 /c "Vous avez échoué 3 fois à la traduction. L\'ordinateur va s\'éteindre dans 10 secondes."')
             
     def on_executable_launched(self, exec):
         self.create_translation_dialog(exec)
