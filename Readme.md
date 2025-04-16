@@ -33,3 +33,4 @@
 ```bash
 git clone https://github.com/votre-utilisateur/vocalock.git
 cd vocalock
+pip install -r requirements.txt
